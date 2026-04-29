@@ -5,7 +5,7 @@ import { supabase } from '../../lib/supabase';
 import { type Address, type Design } from '../../types';
 import { User, MapPin, FileImage, Trash2, Edit2, Plus, ChevronRight, Package } from 'lucide-react';
 
-export const Route = createFileRoute('/profile')({ component: ProfilePage });
+export const Route = createFileRoute('/profile/')({ component: ProfilePage });
 
 function ProfilePage() {
   const [activeTab, setActiveTab] = useState<'addresses' | 'designs'>('addresses');

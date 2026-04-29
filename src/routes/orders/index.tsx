@@ -5,7 +5,7 @@ import { supabase } from '../../lib/supabase';
 import { ORDER_STATUS_MAP, type Order } from '../../types';
 import { Package, ChevronRight, Clock, Truck, CheckCircle, FileText, MapPin } from 'lucide-react';
 
-export const Route = createFileRoute('/orders')({ component: OrdersPage });
+export const Route = createFileRoute('/orders/')({ component: OrdersPage });
 
 function OrdersPage() {
   const [orders, setOrders] = useState<Order[]>([]);
