@@ -1,5 +1,5 @@
 import { supabase } from './supabase';
-import { Design, Order, Address } from '../types';
+import type { Design, Order, Address } from '../types';
 
 export async function createDesign(data: Omit<Design, 'id' | 'created_at'>): Promise<Design | null> {
   const { data: design, error } = await supabase

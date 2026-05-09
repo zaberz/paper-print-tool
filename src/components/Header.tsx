@@ -13,14 +13,14 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
-      <div className="container mx-auto max-w-7xl px-4">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <div className="container mx-auto max-w-6xl px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
-              <FileImage className="w-5 h-5 text-white" />
+          <Link to="/" className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-foreground rounded-lg flex items-center justify-center">
+              <FileImage className="w-4 h-4 text-background" />
             </div>
-            <span className="text-xl font-bold text-gray-900">PrintAI</span>
+            <span className="text-lg font-semibold tracking-tight">PrintAI</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -28,53 +28,53 @@ export default function Header() {
               <Link
                 key={item.id}
                 to={item.href}
-                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground font-medium transition-colors duration-150"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <Link
               to="/design"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors duration-150"
             >
               <Package className="w-4 h-4" />
               开始设计
             </Link>
             <Link
               to="/profile"
-              className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+              className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors duration-150"
             >
-              <User className="w-5 h-5 text-gray-600" />
+              <User className="w-4 h-4 text-foreground" />
             </Link>
           </div>
 
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-border">
             {navItems.map((item) => (
               <Link
                 key={item.id}
                 to={item.href}
-                className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium"
+                className="block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="px-4 pt-4 border-t border-gray-200">
+            <div className="px-4 pt-4 border-t border-border mt-4">
               <Link
                 to="/design"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors"
               >
                 <Package className="w-4 h-4" />
                 开始设计

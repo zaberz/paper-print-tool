@@ -6,18 +6,18 @@ export const Route = createFileRoute('/about')({
 
 function About() {
   return (
-    <main className="page-wrap px-4 py-12">
-      <section className="island-shell rounded-2xl p-6 sm:p-8">
-        <p className="island-kicker mb-2">About</p>
-        <h1 className="display-title mb-3 text-4xl font-bold text-[var(--sea-ink)] sm:text-5xl">
+    <main className="min-h-screen bg-background px-6 py-24">
+      <div className="container mx-auto max-w-2xl">
+        <p className="text-sm text-muted-foreground mb-4">About</p>
+        <h1 className="text-4xl font-semibold text-foreground mb-6 tracking-tight sm:text-5xl">
           A small starter with room to grow.
         </h1>
-        <p className="m-0 max-w-3xl text-base leading-8 text-[var(--sea-ink-soft)]">
+        <p className="text-base leading-8 text-muted-foreground">
           TanStack Start gives you type-safe routing, server functions, and
           modern SSR defaults. Use this as a clean foundation, then layer in
           your own routes, styling, and add-ons.
         </p>
-      </section>
+      </div>
     </main>
   )
 }

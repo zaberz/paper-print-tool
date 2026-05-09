@@ -106,31 +106,31 @@ function DesignPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="container mx-auto max-w-7xl px-4 py-8">
-        <div className="flex items-center gap-4 mb-8">
-          <Link to="/" className="text-gray-600 hover:text-gray-900">
+    <main className="min-h-screen bg-background">
+      <div className="container mx-auto max-w-7xl px-6 py-10">
+        <div className="flex items-center gap-4 mb-10">
+          <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             ← 返回首页
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900">设计制作</h1>
+          <h1 className="text-2xl font-semibold text-foreground tracking-tight">设计制作</h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white rounded-2xl shadow-sm p-6">
+            <div className="bg-card rounded-xl border border-border p-6">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-gray-500">画布尺寸:</span>
+                  <span className="text-sm text-muted-foreground">画布尺寸:</span>
                   <div className="relative">
                     <button
                       onClick={() => setShowSizeDropdown(!showSizeDropdown)}
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors text-sm"
                     >
                       <span>{isCustomSize ? `自定义 ${customWidth} × ${customHeight}mm` : `${selectedSize.name} (${selectedSize.width} × ${selectedSize.height}mm)`}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
                     {showSizeDropdown && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-10">
+                      <div className="absolute top-full left-0 mt-2 w-64 bg-card rounded-lg border border-border shadow-lg z-10">
                         <div className="p-2">
                           {STANDARD_PAPER_SIZES.map((size) => (
                             <button
@@ -140,19 +140,19 @@ function DesignPage() {
                                 setIsCustomSize(false);
                                 setShowSizeDropdown(false);
                               }}
-                              className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${!isCustomSize && selectedSize.id === size.id ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'}`}
+                              className={`w-full text-left px-3 py-2 rounded-lg transition-colors text-sm ${!isCustomSize && selectedSize.id === size.id ? 'bg-secondary text-foreground font-medium' : 'hover:bg-secondary/50 text-muted-foreground'}`}
                             >
                               <div className="font-medium">{size.name}</div>
-                              <div className="text-sm text-gray-500">{size.width} × {size.height}mm - {size.description}</div>
+                              <div className="text-xs text-muted-foreground">{size.width} × {size.height}mm - {size.description}</div>
                             </button>
                           ))}
-                          <div className="border-t my-2" />
+                          <div className="border-t border-border my-2" />
                           <button
                             onClick={() => {
                               setIsCustomSize(true);
                               setShowSizeDropdown(false);
                             }}
-                            className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${isCustomSize ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'}`}
+                            className={`w-full text-left px-3 py-2 rounded-lg transition-colors text-sm ${isCustomSize ? 'bg-secondary text-foreground font-medium' : 'hover:bg-secondary/50 text-muted-foreground'}`}
                           >
                             <div className="font-medium">自定义尺寸</div>
                           </button>
@@ -161,42 +161,42 @@ function DesignPage() {
                     )}
                   </div>
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-muted-foreground">
                   {designTypeNames[selectedType]}设计
                 </div>
               </div>
 
               {isCustomSize && (
-                <div className="flex items-center gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center gap-4 mb-6 p-4 bg-secondary rounded-lg">
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">宽度 (mm)</label>
+                    <label className="block text-sm text-muted-foreground mb-1">宽度 (mm)</label>
                     <input
                       type="number"
                       value={customWidth}
                       onChange={(e) => setCustomWidth(e.target.value)}
-                      className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-32 px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-foreground/20 bg-background text-sm"
                       placeholder="210"
                     />
                   </div>
-                  <div className="text-2xl text-gray-400">×</div>
+                  <div className="text-2xl text-muted-foreground">×</div>
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1">高度 (mm)</label>
+                    <label className="block text-sm text-muted-foreground mb-1">高度 (mm)</label>
                     <input
                       type="number"
                       value={customHeight}
                       onChange={(e) => setCustomHeight(e.target.value)}
-                      className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-32 px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-foreground/20 bg-background text-sm"
                       placeholder="297"
                     />
                   </div>
                 </div>
               )}
 
-              <div className="flex justify-center items-center bg-gray-100 rounded-xl min-h-[500px]">
+              <div className="flex justify-center items-center bg-secondary rounded-xl min-h-[500px]">
                 {generatedImage ? (
                   <div className="relative">
                     <div 
-                      className="bg-white shadow-lg"
+                      className="bg-white shadow-sm border border-border"
                       style={getCanvasStyle()}
                     >
                       <Image
@@ -205,41 +205,41 @@ function DesignPage() {
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <div className="absolute -bottom-2 -right-2 bg-gray-900 text-white text-xs px-2 py-1 rounded">
+                    <div className="absolute -bottom-2 -right-2 bg-foreground text-background text-xs px-2 py-1 rounded">
                       {isCustomSize ? `${customWidth} × ${customHeight}mm` : `${selectedSize.width} × ${selectedSize.height}mm`}
                     </div>
                   </div>
                 ) : (
                   <div className="text-center">
-                    <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Image className="w-10 h-10 text-gray-400" />
+                    <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Image className="w-10 h-10 text-muted-foreground" />
                     </div>
-                    <p className="text-gray-500">输入关键词，点击生成按钮开始设计</p>
+                    <p className="text-muted-foreground text-sm">输入关键词，点击生成按钮开始设计</p>
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {generatedImage && (
                 <>
                   <button
                     onClick={handleRegenerate}
-                    className="flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-2 px-5 py-2.5 border border-border text-foreground rounded-lg hover:bg-secondary transition-colors text-sm font-medium"
                   >
                     <RotateCcw className="w-4 h-4" />
                     重新生成
                   </button>
                   <button
                     onClick={handleSaveDesign}
-                    className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors text-sm font-medium"
                   >
                     {designSaved ? <Check className="w-4 h-4" /> : <Download className="w-4 h-4" />}
                     {designSaved ? '已保存' : '保存设计'}
                   </button>
                   <button
                     onClick={handleOrder}
-                    className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors text-sm font-medium"
                   >
                     <ShoppingCart className="w-4 h-4" />
                     提交订单
@@ -250,14 +250,14 @@ function DesignPage() {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-white rounded-2xl shadow-sm p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">设计类型</h3>
-              <div className="space-y-2">
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="font-semibold text-foreground mb-4 text-sm">设计类型</h3>
+              <div className="space-y-1">
                 {(['poster', 'menu', 'advertisement'] as const).map((type) => (
                   <button
                     key={type}
                     onClick={() => setSelectedType(type)}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${selectedType === type ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50 text-gray-700'}`}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-colors text-sm ${selectedType === type ? 'bg-secondary text-foreground font-medium' : 'hover:bg-secondary/50 text-muted-foreground'}`}
                   >
                     {designTypeNames[type]}
                   </button>
@@ -265,24 +265,24 @@ function DesignPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">关键词输入</h3>
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="font-semibold text-foreground mb-4 text-sm">关键词输入</h3>
               <div className="space-y-4">
                 <textarea
                   value={keywords}
                   onChange={(e) => setKeywords(e.target.value)}
                   placeholder="输入您想要的设计关键词，例如：餐厅菜单 美食 简约风格"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-foreground/20 resize-none bg-background text-sm"
                   rows={4}
                 />
                 <button
                   onClick={handleGenerate}
                   disabled={!keywords.trim() || isGenerating}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
                 >
                   {isGenerating ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-background border-t-transparent rounded-full animate-spin" />
                       生成中...
                     </>
                   ) : (
@@ -295,18 +295,18 @@ function DesignPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm p-6">
-              <h3 className="font-semibold text-gray-900 mb-4">模板参考</h3>
+            <div className="bg-card rounded-xl border border-border p-6">
+              <h3 className="font-semibold text-foreground mb-4 text-sm">模板参考</h3>
               <div className="space-y-3">
                 {templates.map((template) => (
-                  <div key={template.id} className="relative rounded-lg overflow-hidden cursor-pointer group">
+                  <div key={template.id} className="relative rounded-lg overflow-hidden cursor-pointer group border border-border">
                     <Image
                       src={template.preview_url}
                       alt={template.name}
                       className="w-full h-24 object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="text-white text-sm">{template.name}</span>
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">{template.name}</span>
                     </div>
                   </div>
                 ))}
@@ -314,14 +314,14 @@ function DesignPage() {
             </div>
 
             {generatedImage && (
-              <div className="bg-white rounded-2xl shadow-sm p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">保存设计</h3>
+              <div className="bg-card rounded-xl border border-border p-6">
+                <h3 className="font-semibold text-foreground mb-4 text-sm">保存设计</h3>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="输入设计名称"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+                  className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-foreground/20 bg-background text-sm"
                 />
               </div>
             )}
